@@ -4,163 +4,561 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marcus Bufford | IT Portfolio</title>
+  <meta name="description" content="Marcus Bufford — IT Support and Infrastructure Professional. CCNA, CompTIA A+. Network and infrastructure project work, Active Directory, Microsoft 365, and home-lab projects." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #0f1419;
+      --panel: #161c24;
+      --panel-2: #1d2530;
+      --border: #2a3340;
+      --text: #e6e8eb;
+      --text-dim: #aab2bd;
+      --accent: #4ea1ff;
+      --accent-2: #6cd4c5;
+      --tag: #243140;
+      --tag-text: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
       margin: 0;
-      background: #f4f7fb;
-      color: #1f2937;
-      line-height: 1.6;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    nav {
-      background: #1e293b;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    .card {
-      background: white;
-      padding: 24px;
-      margin-bottom: 24px;
+
+    /* ---------- top nav ---------- */
+    .topnav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 20, 25, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+    .topnav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .topnav-brand {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: var(--text);
+    }
+    .topnav-links a {
+      margin-left: 18px;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+    .topnav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding: 64px 0 32px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin: 0 0 8px;
+      letter-spacing: 0.3px;
+    }
+    .hero .role {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      margin: 0 0 16px;
+    }
+    .hero .tagline {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .badge {
+      background: var(--tag);
+      color: var(--tag-text);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+    }
+
+    /* ---------- sections ---------- */
+    section {
+      padding: 56px 0 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+    section h2 {
+      font-size: 1.5rem;
+      margin: 0 0 20px;
+      letter-spacing: 0.3px;
+    }
+    section p { color: var(--text); }
+
+    /* ---------- skills ---------- */
+    .skill-group {
+      margin-bottom: 14px;
+    }
+    .skill-label {
+      font-weight: 600;
+      color: var(--accent-2);
+      margin-right: 6px;
+    }
+    .skill-list {
+      color: var(--text-dim);
+    }
+
+    /* ---------- projects ---------- */
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 22px 24px;
     }
-    h1, h2, h3 {
-      margin-top: 0;
+    .project-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(78, 161, 255, 0.15);
     }
-    ul {
+    .project-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+    }
+    .project-card .meta {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .project-card p { margin: 8px 0; }
+    .project-card ul {
+      margin: 8px 0 12px;
       padding-left: 20px;
+      color: var(--text);
     }
-    .project {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ddd;
+    .project-card ul li { margin-bottom: 4px; }
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
     }
-    .project:last-child {
-      border-bottom: none;
+    .tech {
+      background: var(--tag);
+      color: var(--tag-text);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      border: 1px solid var(--border);
     }
+
+    /* ---------- resume + contact ---------- */
+    .resume-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0b1220;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+    }
+    .btn:hover { text-decoration: none; opacity: 0.92; }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-list li { margin-bottom: 8px; }
+    .contact-label {
+      display: inline-block;
+      width: 90px;
+      color: var(--text-dim);
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
-      background: #0f172a;
-      color: white;
-      margin-top: 30px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      padding: 24px 0 32px;
     }
-    .button {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
+
+    /* ---------- responsive ---------- */
+    @media (min-width: 720px) {
+      .projects {
+        grid-template-columns: 1fr 1fr;
+      }
+      .project-card.featured {
+        grid-column: 1 / -1;
+      }
+      .hero h1 { font-size: 2.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Marcus Bufford</h1>
-    <p>IT Support & Networking Professional</p>
-    <p>CCNA | CompTIA A+ | Troubleshooting | Networking | Systems Support</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#resume">Resume</a>
-    <a href="#contact">Contact</a>
+  <!-- top navigation -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="topnav-brand">Marcus Bufford</div>
+      <div class="topnav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <div class="container">
-
-    <section id="about" class="card">
-      <h2>About Me</h2>
-      <p>
-        I am an IT professional with experience in technical support, desktop support,
-        hardware and software troubleshooting, networking, printer support, and hands-on
-        lab environments. I hold a CCNA and CompTIA A+ certification and am continuing to
-        grow my skills in networking, systems administration, and cybersecurity.
+  <!-- hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Marcus Bufford</h1>
+      <p class="role">IT Support &amp; Infrastructure Professional</p>
+      <p class="tagline">
+        Network and infrastructure project work, Active Directory and Google Workspace
+        administration, endpoint support, and a home lab focused on systems administration.
       </p>
-    </section>
+      <div class="badges">
+        <span class="badge">CCNA</span>
+        <span class="badge">CompTIA A+</span>
+        <span class="badge">Active Directory</span>
+        <span class="badge">Microsoft 365</span>
+        <span class="badge">Networking</span>
+      </div>
+    </div>
+  </header>
 
-    <section id="skills" class="card">
-      <h2>Skills & Certifications</h2>
-      <h3>Certifications</h3>
-      <ul>
-        <li>CCNA</li>
-        <li>CompTIA A+</li>
-      </ul>
+  <!-- about -->
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p>
+        I am an IT professional with 6+ years across IT support, help desk, and hardware repair,
+        currently working in a tier-2 / project-support role for a multi-site, mid-size environment.
+        My recent work has centered on infrastructure projects — including a full corporate
+        headquarters network buildout — alongside day-to-day Active Directory and Google Workspace
+        administration, endpoint troubleshooting, onboarding/offboarding ownership, and disaster
+        recovery participation.
+      </p>
+      <p>
+        I hold the Cisco CCNA and CompTIA A+ certifications, and I am building deeper systems
+        administration skills through a structured 12-week home lab plan covering Active Directory,
+        Group Policy, Microsoft 365 administration, Linux fundamentals, PowerShell, virtualization,
+        and AWS basics. The projects below reflect my progress so far.
+      </p>
+    </div>
+  </section>
 
-      <h3>Technical Skills</h3>
-      <ul>
-        <li>End-user support</li>
-        <li>Hardware and software troubleshooting</li>
-        <li>TCP/IP, DHCP, DNS</li>
-        <li>Switch and router configuration</li>
-        <li>Printer troubleshooting</li>
-        <li>Google Workspace / Microsoft 365 support</li>
-        <li>Technical documentation</li>
-      </ul>
-    </section>
+  <!-- skills -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills &amp; Certifications</h2>
 
-    <section id="projects" class="card">
+      <div class="skill-group">
+        <span class="skill-label">Certifications:</span>
+        <span class="skill-list">Cisco CCNA, CompTIA A+</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Identity &amp; Directory:</span>
+        <span class="skill-list">
+          Active Directory (users, groups, OUs, password resets, account unlocks, group membership),
+          Google Workspace administration, Group Policy basics, MFA, onboarding/offboarding workflows
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Cloud &amp; Productivity:</span>
+        <span class="skill-list">
+          Microsoft 365 administration basics, Exchange Online, Teams admin, SharePoint permissions,
+          Google Workspace (mail, users, groups)
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Networking:</span>
+        <span class="skill-list">
+          Cisco Meraki, Cisco SG500-series switches, Ubiquiti UniFi wireless, modems/ONT, TCP/IP,
+          DNS, DHCP, VPN, VLANs, firewalls
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Cabling &amp; Physical Infra:</span>
+        <span class="skill-list">
+          Cat6 cable runs and termination, patch panel build and test, structured cabling,
+          network testing, rack and device installation
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Endpoints &amp; Systems:</span>
+        <span class="skill-list">
+          Windows 10/11, ServiceNow, Microsoft System Center, Sophos, network printers,
+          hardware/software troubleshooting, asset tracking
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Physical Security &amp; AV:</span>
+        <span class="skill-list">
+          Reolink and Amcrest IP cameras, Blue Iris NVR, Keri Systems access control / alarm,
+          conference room AV, TV mounting
+        </span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Operations:</span>
+        <span class="skill-list">
+          IT project leadership, site relocation, vendor coordination, disaster recovery participation,
+          technical documentation
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- projects -->
+  <section id="projects">
+    <div class="container">
       <h2>Featured Projects</h2>
+      <div class="projects">
 
-      <div class="project">
-        <h3>Small Office / Home Lab Network Setup</h3>
-        <p><strong>Overview:</strong> Built and tested a hands-on network lab environment to strengthen practical networking skills and simulate real-world infrastructure scenarios.</p>
-        <p><strong>Technologies Used:</strong> Cisco router, Cisco switch, firewall, DHCP, static IP addressing, Ethernet cabling.</p>
+        <!-- featured project: HQ relocation -->
+        <article class="project-card featured">
+          <h3>Corporate Headquarters Relocation — Network &amp; Infrastructure Lead</h3>
+          <p class="meta">Mid-size company HQ buildout · ~150 users · single building</p>
+          <p>
+            Served as on-site lead for the IT side of a corporate headquarters relocation. Took the
+            new building from empty walls to a fully operational network and end-user environment,
+            and decommissioned the previous site with a clean cutover. Coordinated ISP turn-up,
+            structured cabling, switch and wireless deployment, IP camera and alarm systems, and
+            full office and conference-room setup.
+          </p>
+          <p><strong>What I did:</strong></p>
+          <ul>
+            <li>
+              Configured a Cisco SG500-52MP switch and connected all networked devices; tested
+              existing patches and cables in the building, terminated new Cat6 runs where needed,
+              and built and tested new patch panels.
+            </li>
+            <li>
+              Deployed and configured Ubiquiti UniFi AC Pro access points and stood up the UniFi
+              controller on a server to centrally manage the wireless environment.
+            </li>
+            <li>
+              Coordinated ISP turn-up (modem / ONT) and Cisco Meraki deployment for the new site.
+            </li>
+            <li>
+              Installed and configured Reolink and Amcrest IP cameras, then stood up a server
+              running Blue Iris to manage and record camera feeds.
+            </li>
+            <li>
+              Oversaw installation of a networked alarm and access control system managed via
+              Keri Systems software on a dedicated server.
+            </li>
+            <li>
+              Set up individual offices and the conference room: mounted TVs, configured network
+              printers, and validated end-user connectivity prior to go-live.
+            </li>
+            <li>
+              Decommissioned the previous site’s network and coordinated equipment moves,
+              transitions, and vendor activity to ensure a smooth cutover with minimal business
+              impact.
+            </li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech">Cisco SG500-52MP</span>
+            <span class="tech">Cisco Meraki</span>
+            <span class="tech">Ubiquiti UniFi</span>
+            <span class="tech">Cat6 / patch panels</span>
+            <span class="tech">Reolink / Amcrest</span>
+            <span class="tech">Blue Iris NVR</span>
+            <span class="tech">Keri Systems</span>
+            <span class="tech">Vendor coordination</span>
+          </div>
+        </article>
+
+        <!-- AD lab -->
+        <article class="project-card">
+          <h3>Active Directory Administration Lab</h3>
+          <p class="meta">Home lab · Weeks 1–2 of 12-week plan</p>
+          <p>
+            Built a Windows Server Active Directory lab to practice the core admin workflows
+            employers ask about: user and group administration, OU design, account lifecycle,
+            and basic Group Policy.
+          </p>
+          <ul>
+            <li>
+              Created organizational units for departments and workstations, provisioned test
+              users, and built security groups for role-based access.
+            </li>
+            <li>
+              Practiced password resets, account unlocks, group membership changes, and
+              account disable / enable as part of an onboarding and offboarding workflow.
+            </li>
+            <li>
+              Configured and tested a basic Group Policy object to understand policy scope,
+              OU linkage, and how policies apply to users and computers.
+            </li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech">Windows Server</span>
+            <span class="tech">Active Directory</span>
+            <span class="tech">Group Policy</span>
+            <span class="tech">OU design</span>
+          </div>
+        </article>
+
+        <!-- M365 lab -->
+        <article class="project-card">
+          <h3>Microsoft 365 Administration Lab</h3>
+          <p class="meta">Home lab · Weeks 3–4 of 12-week plan</p>
+          <p>
+            Worked through the Microsoft 365 admin center to practice user lifecycle and
+            collaboration administration, with a focus on tasks that show up in real
+            sysadmin and help-desk-engineer roles.
+          </p>
+          <ul>
+            <li>
+              Created test users, assigned licenses, set up groups, and explored shared
+              mailbox concepts and admin-center navigation.
+            </li>
+            <li>
+              Enabled and validated MFA on test accounts and documented secure onboarding
+              and offboarding workflows.
+            </li>
+            <li>
+              Built familiarity with Exchange Online, Teams administration basics, and
+              SharePoint permissions concepts.
+            </li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech">Microsoft 365</span>
+            <span class="tech">Exchange Online</span>
+            <span class="tech">Teams admin</span>
+            <span class="tech">SharePoint</span>
+            <span class="tech">MFA</span>
+          </div>
+        </article>
+
+        <!-- existing: SOHO lab -->
+        <article class="project-card">
+          <h3>Small Office / Home Lab Network Setup</h3>
+          <p class="meta">Home lab · networking fundamentals</p>
+          <p>
+            Built and tested a hands-on network lab to strengthen practical networking skills
+            and simulate small-business infrastructure scenarios.
+          </p>
+          <div class="tech-row">
+            <span class="tech">Cisco router</span>
+            <span class="tech">Cisco switch</span>
+            <span class="tech">Firewall</span>
+            <span class="tech">DHCP</span>
+            <span class="tech">Static IP</span>
+            <span class="tech">Ethernet cabling</span>
+          </div>
+        </article>
+
+        <!-- existing: Cisco switch config -->
+        <article class="project-card">
+          <h3>Cisco Switch Configuration and Management Setup</h3>
+          <p class="meta">Home lab · switch administration</p>
+          <p>
+            Configured and reviewed Cisco switch settings in a lab environment to support
+            device management, basic network access, and switch administration.
+          </p>
+          <div class="tech-row">
+            <span class="tech">Cisco Catalyst</span>
+            <span class="tech">VLAN interface</span>
+            <span class="tech">Default gateway</span>
+            <span class="tech">Access ports</span>
+            <span class="tech">Web management</span>
+          </div>
+        </article>
+
+        <!-- existing: scan-to-email -->
+        <article class="project-card">
+          <h3>Scan-to-Email Troubleshooting and SMTP Configuration</h3>
+          <p class="meta">Real-world troubleshooting writeup</p>
+          <p>
+            Worked through scan-to-email troubleshooting involving printer settings, SMTP
+            configuration, authentication, and email delivery requirements.
+          </p>
+          <div class="tech-row">
+            <span class="tech">MFP web UI</span>
+            <span class="tech">SMTP</span>
+            <span class="tech">Gmail SMTP</span>
+            <span class="tech">Google Workspace</span>
+          </div>
+        </article>
+
       </div>
+    </div>
+  </section>
 
-      <div class="project">
-        <h3>Cisco Switch Configuration and Management Setup</h3>
-        <p><strong>Overview:</strong> Configured and reviewed Cisco switch settings in a lab environment to support device management, basic network access, and switch administration.</p>
-        <p><strong>Technologies Used:</strong> Cisco Catalyst switch, VLAN interface management, default gateway, access ports, web management.</p>
-      </div>
-
-      <div class="project">
-        <h3>Scan-to-Email Troubleshooting and SMTP Configuration Review</h3>
-        <p><strong>Overview:</strong> Worked through scan-to-email troubleshooting involving printer settings, SMTP configuration, authentication, and email delivery requirements.</p>
-        <p><strong>Technologies Used:</strong> Multifunction printer web interface, SMTP, Gmail SMTP concepts, Google Workspace admin knowledge.</p>
-      </div>
-    </section>
-
-    <section id="resume" class="card">
+  <!-- resume -->
+  <section id="resume">
+    <div class="container">
       <h2>Resume</h2>
-      <p>Add a PDF copy of your resume to this repository later and link it here.</p>
-      <a class="button" href="#">Resume Coming Soon</a>
-    </section>
+      <p>Download the latest version of my resume (PDF):</p>
+      <div class="resume-row">
+        <a class="btn" href="Marcus_Bufford_Resume.pdf" download>Download Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="card">
+  <!-- contact -->
+  <section id="contact">
+    <div class="container">
       <h2>Contact</h2>
-      <p>Email: your-email@example.com</p>
-      <p>LinkedIn: add your LinkedIn profile link</p>
-      <p>GitHub: add your GitHub profile link</p>
-    </section>
-
-  </div>
+      <p>The best way to reach me is on LinkedIn. I check messages there regularly.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">LinkedIn:</span>
+          <a href="https://www.linkedin.com/in/marcus-bufford-01a383127/" target="_blank" rel="noopener">
+            linkedin.com/in/marcus-bufford-01a383127
+          </a>
+        </li>
+        <li>
+          <span class="contact-label">GitHub:</span>
+          <a href="https://github.com/marcb-it" target="_blank" rel="noopener">
+            github.com/marcb-it
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2026 Marc B | IT Portfolio</p>
+    © 2026 Marcus Bufford · IT Portfolio
   </footer>
 
 </body>
