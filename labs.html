@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcus Bufford — Lab Write-ups</title>
+  <meta name="description" content="Detailed write-ups of home-lab projects in Active Directory, Microsoft 365, Linux, PowerShell, virtualization, and cloud administration." />
+
+  <!-- If you have a site-wide stylesheet, link it here.
+       Adjust the path to match your repo (e.g. /css/styles.css). -->
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+
+  <!-- Minimal fallback styles so the page is readable even without your CSS.
+       Safe to delete this block once labs.html is wired into your site CSS. -->
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      line-height: 1.6;
+      color: #1f2937;
+    }
+    nav.top { margin-bottom: 2rem; font-size: 0.95rem; }
+    nav.top a { color: #2563eb; text-decoration: none; }
+    nav.top a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+    h2 { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; font-size: 1.5rem; }
+    h2:first-of-type { border-top: none; padding-top: 0; }
+    h3 { font-size: 1.1rem; margin-top: 1.75rem; color: #111827; }
+    p.lead { color: #4b5563; font-style: italic; margin-top: -0.25rem; }
+    .toc { background: #f9fafb; padding: 1rem 1.25rem; border-radius: 6px; margin-bottom: 2rem; }
+    .toc ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+    .toc li { margin: 0.2rem 0; }
+    code { background: #f3f4f6; padding: 0.05rem 0.3rem; border-radius: 3px; font-size: 0.92em; }
+    .tags { margin-top: 1rem; }
+    .tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      margin: 0.15rem 0.2rem 0.15rem 0;
+    }
+    a.back { color: #2563eb; text-decoration: none; }
+    a.back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="index.html" class="back">&larr; Back to portfolio</a>
+</nav>
+
+<h1>Lab Write-ups</h1>
+<p class="lead">Detailed documentation of completed home-lab projects from a 12-week
+structured plan, focused on the systems and infrastructure skills that map to
+sysadmin, network administrator, and infrastructure support roles.</p>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ul>
+    <li><a href="#ad-lab">Active Directory Administration Lab</a></li>
+    <li><a href="#m365-lab">Microsoft 365 Administration Lab</a></li>
+    <li><a href="#linux-lab">Linux Server Fundamentals and Troubleshooting Lab</a></li>
+    <li><a href="#powershell-lab">PowerShell Scripting Lab</a></li>
+    <li><a href="#vm-lab">Virtual Machine Deployment and Networking Lab</a></li>
+    <li><a href="#cloud-lab">Cloud Administration Fundamentals Lab</a></li>
+  </ul>
+</div>
+
+
+<!-- ============================== AD LAB ============================== -->
+<h2 id="ad-lab">Active Directory Administration Lab</h2>
+
+<h3>Overview</h3>
+<p>This lab built a complete Windows Server Active Directory environment in a
+virtual lab and used it to practice the day-to-day administration tasks expected
+in a help-desk, desktop support, or junior sysadmin role. The goal was to move
+from "I know what these things are" to "I can do them confidently on demand."</p>
+
+<h3>What I configured</h3>
+<p>Installed Windows Server, set a static IP, promoted it to a domain controller
+for the <code>lab.local</code> domain, and configured DNS. Stood up a Windows 11
+client, pointed its DNS at the DC, and joined the client to the domain.</p>
+<p>Built an OU hierarchy with top-level OUs (Employees, Groups, Workstations,
+Service Accounts, Disabled Users) and department sub-OUs under Employees (IT, HR,
+Sales). Provisioned test users in each department OU and created security groups
+using a consistent <code>GG_</code> naming convention covering department
+membership, VPN access, file-share access, and local admin rights — for example
+<code>GG_IT_Users</code>, <code>GG_VPN_Users</code>,
+<code>GG_FileShare_HR_RW</code>.</p>
+<p>Practiced help-desk tasks against the lab: password resets, account unlocks
+(simulating lockouts from the client), enable/disable, OU moves to model
+department transfers, and group membership additions/removals. Worked through
+several ticket-style scenarios end-to-end.</p>
+<p>Created a basic GPO linked to a department OU, configured a User Configuration
+policy (e.g., restrict Control Panel access), ran <code>gpupdate /force</code> on
+the client, and verified application with <code>gpresult /r</code> to see exactly
+which policies applied and in what order.</p>
+<p>Executed end-to-end onboarding for a new Sales hire — account creation, OU
+placement, group assignment to Sales/VPN/file-share groups, and documentation —
+and the matching offboarding workflow: account disable, password reset, group
+removal, move to the Disabled Users OU with a termination date annotation.</p>
+
+<h3>What I learned</h3>
+<p>The lab connected concepts I use in production AD work — group-based access,
+OU organization, GPO scoping — to the underlying mechanics. Working through the
+onboarding and offboarding scenarios reinforced why naming conventions,
+group-based access (vs. direct user permissions), and a Disabled Users OU all
+matter for security and compliance. The ticket-style scenarios at the end were
+where confidence actually came from.</p>
+
+<div class="tags">
+  <span class="tag">Windows Server</span>
+  <span class="tag">Active Directory</span>
+  <span class="tag">Group Policy</span>
+  <span class="tag">OU design</span>
+  <span class="tag">gpresult</span>
+  <span class="tag">Onboarding/Offboarding</span>
+</div>
+
+
+<!-- ============================= M365 LAB ============================= -->
+<h2 id="m365-lab">Microsoft 365 Administration Lab</h2>
+
+<h3>Overview</h3>
+<p>This lab used a Microsoft 365 test tenant to practice user lifecycle and
+collaboration administration across all five M365 admin centers, with an emphasis
+on identity, licensing, and security tasks that recur in real sysadmin and
+help-desk-engineer work.</p>
+
+<h3>What I configured</h3>
+<p>Created test accounts in the Microsoft 365 admin center (Alex Admin as an
+admin-style user, Taylor User and Jordan User as standard employees) and assigned
+licenses covering Exchange Online, Teams, and SharePoint/OneDrive. Validated that
+Exchange mailboxes provisioned automatically once licensing was applied.</p>
+<p>Configured shared mailboxes and Microsoft 365 Groups for collaboration testing.
+Worked through the Exchange admin center to view mailbox attributes and basic mail
+flow; the Teams admin center to review messaging and meeting policies; and the
+SharePoint admin center to review site-level permissions and external sharing
+controls.</p>
+<p>Enforced MFA on test accounts through the Microsoft Entra admin center and
+reviewed sign-in activity to validate enforcement. Documented a secure onboarding
+and offboarding workflow that combines license assignment, MFA, group membership,
+and access deprovisioning.</p>
+
+<h3>What I learned</h3>
+<p>M365 is administered across multiple specialized portals, and knowing which
+task lives where matters. License assignment triggers mailbox provisioning
+automatically — that's not always obvious starting out. MFA enforcement from
+Entra is the single highest-impact security control in M365, and the lab made
+clear how identity (Entra) is the foundation everything else — Exchange, Teams,
+SharePoint — sits on top of.</p>
+
+<div class="tags">
+  <span class="tag">Microsoft 365</span>
+  <span class="tag">Exchange Online</span>
+  <span class="tag">Teams admin</span>
+  <span class="tag">SharePoint</span>
+  <span class="tag">Entra ID</span>
+  <span class="tag">MFA</span>
+</div>
+
+
+<!-- ============================ LINUX LAB ============================ -->
+<h2 id="linux-lab">Linux Server Fundamentals and Troubleshooting Lab</h2>
+
+<h3>Overview</h3>
+<p>This lab built core Linux administration fluency on Ubuntu Server LTS, with a
+focus on the command-line skills that appear in every sysadmin and infrastructure
+support job posting that lists "Linux" as a requirement. Folded in a side-by-side
+comparison against Windows Server administration.</p>
+
+<h3>What I configured</h3>
+<p>Installed Ubuntu Server LTS in a VM and worked through filesystem navigation
+(<code>cd</code>, <code>ls</code>, <code>pwd</code>, <code>find</code>), user and
+group management (<code>useradd</code>, <code>usermod</code>,
+<code>groupadd</code>, <code>passwd</code>), and file permissions
+(<code>chmod</code> in both numeric and symbolic forms, <code>chown</code> for
+ownership changes).</p>
+<p>Practiced package management with <code>apt</code> (update, upgrade, install,
+remove), service control with <code>systemctl</code> (start, stop, enable,
+status), and log review using <code>journalctl</code> and the contents of
+<code>/var/log/</code>.</p>
+<p>Walked through a service-down troubleshooting scenario: identified the failed
+service via <code>systemctl status</code>, reviewed recent log entries with
+<code>journalctl -u</code>, checked dependencies, and resolved the issue.</p>
+<p>Documented a side-by-side comparison of common administration tasks (user
+creation, service restart, network configuration check, log review) on Windows
+Server vs. Linux to support faster troubleshooting when switching between the
+two.</p>
+
+<h3>What I learned</h3>
+<p>Linux administration becomes much faster once the small set of core verbs
+(<code>ls</code>, <code>cd</code>, <code>cat</code>, <code>less</code>,
+<code>tail</code>, <code>grep</code>, <code>find</code>, <code>systemctl</code>,
+<code>journalctl</code>) becomes second nature. The cross-platform comparison
+clarified that the underlying administration tasks are the same on Windows and
+Linux — what changes is the tooling. That perspective makes it easier to support
+mixed environments instead of treating Linux as a foreign system.</p>
+
+<div class="tags">
+  <span class="tag">Ubuntu Server</span>
+  <span class="tag">Linux administration</span>
+  <span class="tag">systemd</span>
+  <span class="tag">journalctl</span>
+  <span class="tag">Bash</span>
+  <span class="tag">Cross-platform troubleshooting</span>
+</div>
+
+
+<!-- ========================= POWERSHELL LAB ========================= -->
+<h2 id="powershell-lab">PowerShell Scripting Lab</h2>
+
+<h3>Overview</h3>
+<p>This lab built two PowerShell projects to develop scripting fluency beyond
+syntax memorization, focused on the data collection and CSV reporting workflows
+that come up in real IT admin work.</p>
+
+<h3>What I built</h3>
+<p>Set up a working folder at <code>C:\PowerShellLab\</code> and validated the
+PowerShell version with <code>$PSVersionTable</code>. Worked through PowerShell
+foundations: variables, strings, integers, arrays, hashtables, <code>foreach</code>
+loops, <code>if</code>/<code>else</code> conditional logic, and parameter input.</p>
+<p><strong>Week 7 — System Inventory Script:</strong> Wrote a script using
+<code>Get-CimInstance</code> to collect hostname, IP address, OS version, and
+serial number from the local machine, then exported the results to a structured
+CSV via <code>Export-Csv</code>.</p>
+<p><strong>Week 8 — CSV-Driven Device Reporting:</strong> Built a more realistic
+project. Created a mock <code>Devices.csv</code> as input, then wrote
+<code>DeviceReport.ps1</code> to <code>Import-Csv</code> the file, loop through
+each record, attempt to gather information per device, log success or failure
+with <code>try</code>/<code>catch</code> error handling, and
+<code>Export-Csv</code> the consolidated results to
+<code>DeviceReportOutput.csv</code>. Added inline comments throughout and
+produced a <code>README.txt</code> explaining script purpose, expected inputs and
+outputs, and troubleshooting notes.</p>
+
+<h3>What I learned</h3>
+<p>PowerShell is most useful when the scripts produce structured output you can
+hand back to a manager or feed into another process — that's what makes CSV input
+and output central rather than incidental. Error handling with
+<code>try</code>/<code>catch</code> turns brittle scripts into ones that can run
+unattended across many devices and still produce a usable report when individual
+items fail. Writing the README forced me to think about who else would read the
+script, which sharpened the inline comments.</p>
+
+<div class="tags">
+  <span class="tag">PowerShell</span>
+  <span class="tag">Get-CimInstance</span>
+  <span class="tag">Import-Csv</span>
+  <span class="tag">Export-Csv</span>
+  <span class="tag">Try/Catch</span>
+  <span class="tag">Admin reporting</span>
+</div>
+
+
+<!-- ============================== VM LAB ============================== -->
+<h2 id="vm-lab">Virtual Machine Deployment and Networking Lab</h2>
+
+<h3>Overview</h3>
+<p>This lab developed virtualization administration fluency — deploying VMs,
+managing snapshots, and configuring virtual networking — with an emphasis on the
+troubleshooting patterns specific to virtualized environments.</p>
+
+<h3>What I configured</h3>
+<p>Deployed multiple VMs in a desktop hypervisor (VirtualBox / VMware Workstation),
+configured CPU and memory allocation appropriate to each guest OS, and exercised
+snapshot and revert workflows to practice non-destructive testing and recovery.</p>
+<p>Configured virtual networking in both NAT and bridged modes, then walked
+through a connectivity troubleshooting scenario: a VM that couldn't reach the
+network. Worked through the isolation steps — adapter mode, IP assignment, DNS
+resolution, gateway reachability — and documented the resolution.</p>
+<p>Captured snapshot/restore procedures and a brief virtual networking reference
+for repeatable lab and support use.</p>
+
+<h3>What I learned</h3>
+<p>Snapshots are the single feature that makes lab work efficient — being able to
+revert to a known good state means you can experiment without setup penalty. The
+NAT vs. bridged distinction matters constantly when a VM can or can't reach the
+host network, and developing a quick mental checklist for that situation saves
+real time in support work.</p>
+
+<div class="tags">
+  <span class="tag">VirtualBox</span>
+  <span class="tag">VMware Workstation</span>
+  <span class="tag">Snapshots</span>
+  <span class="tag">Virtual networking</span>
+  <span class="tag">NAT</span>
+  <span class="tag">Bridged</span>
+</div>
+
+
+<!-- ============================ CLOUD LAB ============================ -->
+<h2 id="cloud-lab">Cloud Administration Fundamentals Lab</h2>
+<p class="lead">Azure, Entra ID, Intune, and AWS</p>
+
+<h3>Overview</h3>
+<p>This lab built foundational cloud administration skills across Microsoft Azure
+and AWS, focused on identity, compute, storage, access control, and monitoring —
+the building blocks that show up in any IT administration or infrastructure
+support role with cloud exposure. Used Free Tier and trial services throughout to
+keep the lab cost-controlled.</p>
+
+<h3>What I configured — Microsoft Azure</h3>
+<p>Created and managed test users and groups in Microsoft Entra ID, enforced MFA,
+and reviewed Conditional Access concepts to understand how identity protection
+extends beyond simple authentication. Deployed a resource group, an Azure virtual
+network with subnets, and a Free Tier Azure VM (B-series), then reviewed
+role-based access control assignments at the subscription and resource group
+level.</p>
+<p>Reviewed the Microsoft Intune admin center to understand cloud-based endpoint
+management: device enrollment concepts, compliance policies, and how Intune ties
+into a hybrid AD/Entra environment.</p>
+
+<h3>What I configured — AWS</h3>
+<p>Configured IAM users and groups with least-privilege policy attachments,
+launched a Free Tier EC2 instance (Amazon Linux), and reviewed instance
+connectivity via security group inbound rules. Created an S3 bucket and reviewed
+the default block-public-access settings. Reviewed CloudWatch metrics for the EC2
+instance at a conceptual level.</p>
+
+<h3>Comparative documentation</h3>
+<p>Throughout the lab, captured architecture notes comparing how Azure and AWS
+solve the same five problems with different terminology: identity (Entra ID vs.
+IAM), compute (Azure VM vs. EC2), storage (Azure Storage vs. S3), network
+security (NSG vs. security group), and monitoring (Azure Monitor / Log Analytics
+vs. CloudWatch).</p>
+
+<h3>What I learned</h3>
+<p>The biggest takeaway was that Azure and AWS solve the same problems with
+different terminology — once you map "security group" to "NSG" and "EC2" to
+"Azure VM," moving between them becomes much easier. Free Tier and trial services
+are essential for hands-on learning without runaway cost, and the cleanup step at
+the end of each session matters more than I expected. Cloud identity (Entra, IAM)
+is the foundation everything else depends on — MFA, RBAC, and Conditional Access
+aren't peripheral, they're the gate.</p>
+
+<div class="tags">
+  <span class="tag">Microsoft Azure</span>
+  <span class="tag">Entra ID</span>
+  <span class="tag">Intune</span>
+  <span class="tag">Conditional Access</span>
+  <span class="tag">AWS</span>
+  <span class="tag">IAM</span>
+  <span class="tag">EC2</span>
+  <span class="tag">S3</span>
+  <span class="tag">CloudWatch</span>
+  <span class="tag">MFA</span>
+</div>
+
+
+<nav class="top" style="margin-top: 3rem;">
+  <a href="index.html" class="back">&larr; Back to portfolio</a>
+</nav>
+
+</body>
+</html>
