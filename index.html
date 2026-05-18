@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Primary Meta Tags -->
-<title>Marcus Bufford — IT Infrastructure & Network Portfolio</title>
-<meta name="title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
-<meta name="description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Cisco, and Microsoft 365 administration.">
-
-<!-- Open Graph / Facebook / LinkedIn -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://https://marcb-it.github.io/">
-<meta property="og:title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
-<meta property="og:description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Cisco, and Microsoft 365 administration.">
-<meta property="og:image" content="https://https://marcb-it.github.io/preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
-<meta property="og:image:alt" content="Marcus Bufford IT Infrastructure Portfolio cover image">
-
-<!-- Twitter / X -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://https://marcb-it.github.io/">
-<meta property="twitter:title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
-<meta property="twitter:description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Cisco, and Microsoft 365 administration.">
-<meta property="twitter:image" content="https://https://marcb-it.github.io/preview.png">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marcus Bufford | IT Portfolio</title>
-  <meta name="description" content="Marcus Bufford — IT Support and Infrastructure Professional. CCNA, CompTIA A+. Network and infrastructure project work, Active Directory, Microsoft 365, and home-lab projects." />
+
+  <!-- Primary Meta Tags -->
+  <title>Marcus Bufford — IT Infrastructure & Network Portfolio</title>
+  <meta name="title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
+  <meta name="description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Microsoft 365, Linux, PowerShell, and cloud administration.">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marcb-it.github.io/">
+  <meta property="og:title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
+  <meta property="og:description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Microsoft 365, Linux, PowerShell, and cloud administration.">
+  <meta property="og:image" content="https://marcb-it.github.io/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta property="og:image:alt" content="Marcus Bufford IT Infrastructure Portfolio cover image">
+
+  <!-- Twitter / X -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://marcb-it.github.io/">
+  <meta property="twitter:title" content="Marcus Bufford — IT Infrastructure & Network Portfolio">
+  <meta property="twitter:description" content="CCNA-certified IT Infrastructure Technician. Network buildouts, home-lab documentation, and case studies in Active Directory, Microsoft 365, Linux, PowerShell, and cloud administration.">
+  <meta property="twitter:image" content="https://marcb-it.github.io/preview.png">
+
   <style>
     :root {
       --bg: #0f1419;
@@ -53,6 +54,15 @@
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    code {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      color: var(--accent-2);
+    }
 
     .container {
       max-width: 960px;
@@ -184,6 +194,13 @@
       color: var(--text);
     }
     .project-card ul li { margin-bottom: 4px; }
+    .writeup-link {
+      display: inline-block;
+      margin: 10px 0 4px;
+      font-size: 0.92rem;
+      color: var(--accent-2);
+    }
+    .writeup-link:hover { text-decoration: underline; }
     .tech-row {
       display: flex;
       flex-wrap: wrap;
@@ -275,7 +292,6 @@
       </p>
       <div class="badges">
         <span class="badge">CCNA</span>
-        <span class="badge">CompTIA A+</span>
         <span class="badge">Active Directory</span>
         <span class="badge">Microsoft 365</span>
         <span class="badge">Networking</span>
@@ -289,17 +305,18 @@
       <h2>About</h2>
       <p>
         I am an IT professional with 6+ years across IT support, help desk, and hardware repair,
-        currently serving as the sole IT professional for my location  / project-support role for 
-        a multi-site, mid-size environment. My recent work has centered on infrastructure projects, 
-        including a full corporate headquarters network buildout, alongside day-to-day Active 
-        Directory and Google Workspace administration, endpoint troubleshooting, onboarding/offboarding 
-        ownership, and disaster recovery participation.
+        with experience as the on-site IT lead and project-support technician for a ~250-user,
+        multi-site environment. My recent work has centered on infrastructure projects, including
+        a full corporate headquarters network buildout, alongside Active Directory and Google
+        Workspace administration, endpoint troubleshooting, onboarding/offboarding ownership, and
+        disaster recovery participation.
       </p>
       <p>
-        I hold the Cisco CCNA and CompTIA A+ certifications, and I am building deeper systems
-        administration skills through a structured home lab plan covering Active Directory,
-        Group Policy, Microsoft 365 administration, Linux fundamentals, PowerShell, virtualization,
-        and AWS basics. The projects below reflect my progress so far.
+        I hold the Cisco CCNA certification and have been working through a structured
+        12-week home lab plan to deepen my systems administration skill set. The first
+        ten weeks — Active Directory, Group Policy, Microsoft 365 administration, Linux
+        administration, PowerShell, virtualization, and cloud administration (Azure,
+        Entra ID, Intune, and AWS) — are complete. The projects below document that work.
       </p>
     </div>
   </section>
@@ -311,19 +328,19 @@
 
       <div class="skill-group">
         <span class="skill-label">Certifications:</span>
-        <span class="skill-list">Cisco CCNA, CompTIA A+</span>
+        <span class="skill-list">Cisco CCNA</span>
       </div>
       <div class="skill-group">
         <span class="skill-label">Identity &amp; Directory:</span>
         <span class="skill-list">
           Active Directory (users, groups, OUs, password resets, account unlocks, group membership),
-          Google Workspace administration, Group Policy basics, MFA, onboarding/offboarding workflows
+          Google Workspace administration, Group Policy, MFA, onboarding/offboarding workflows
         </span>
       </div>
       <div class="skill-group">
         <span class="skill-label">Cloud &amp; Productivity:</span>
         <span class="skill-list">
-          Microsoft 365 administration basics, Exchange Online, Teams admin, SharePoint permissions,
+          Microsoft 365 administration, Exchange Online, Teams admin, SharePoint permissions,
           Google Workspace (mail, users, groups)
         </span>
       </div>
@@ -429,62 +446,256 @@
         <!-- AD lab -->
         <article class="project-card">
           <h3>Active Directory Administration Lab</h3>
-          <p class="meta">Home lab</p>
+          <p class="meta">Home lab · Windows Server, Windows 11 client, lab.local domain</p>
           <p>
-            Built a Windows Server Active Directory lab to practice the core admin workflows
-            employers ask about: user and group administration, OU design, account lifecycle,
-            and basic Group Policy.
+            Built a complete Windows Server Active Directory environment in a virtual lab —
+            a domain controller hosting <code>lab.local</code> and a Windows 11 client joined
+            to the domain — and worked through the full administration workflow expected of a
+            help-desk-to-sysadmin candidate.
           </p>
           <ul>
             <li>
-              Created organizational units for departments and workstations, provisioned test
-              users, and built security groups for role-based access.
+              Promoted Windows Server to a domain controller, configured DNS, and joined a
+              Windows 11 client to <code>lab.local</code>.
             </li>
             <li>
-              Practiced password resets, account unlocks, group membership changes, and
-              account disable / enable as part of an onboarding and offboarding workflow.
+              Designed an OU hierarchy (Employees, Groups, Workstations, Service Accounts,
+              Disabled Users) with department sub-OUs (IT, HR, Sales) and built role-based
+              security groups using a consistent naming convention
+              (<code>GG_IT_Users</code>, <code>GG_VPN_Users</code>,
+              <code>GG_FileShare_HR_RW</code>).
             </li>
             <li>
-              Configured and tested a basic Group Policy object to understand policy scope,
-              OU linkage, and how policies apply to users and computers.
+              Practiced password resets, account unlocks, enable/disable, OU moves, and group
+              membership changes against ticket-style help-desk scenarios.
+            </li>
+            <li>
+              Created and linked a Group Policy object, applied it with
+              <code>gpupdate /force</code>, and verified scope and inheritance with
+              <code>gpresult /r</code>.
+            </li>
+            <li>
+              Executed end-to-end onboarding (new Sales hire — account, OU placement, group
+              assignment, documentation) and offboarding (account disable, password reset,
+              group removal, move to Disabled Users OU with termination notation).
             </li>
           </ul>
+          <a class="writeup-link" href="labs.html#ad-lab">View full write-up &rarr;</a>
           <div class="tech-row">
             <span class="tech">Windows Server</span>
             <span class="tech">Active Directory</span>
             <span class="tech">Group Policy</span>
             <span class="tech">OU design</span>
+            <span class="tech">gpresult</span>
+            <span class="tech">Onboarding/Offboarding</span>
           </div>
         </article>
 
         <!-- M365 lab -->
         <article class="project-card">
           <h3>Microsoft 365 Administration Lab</h3>
-          <p class="meta">Home lab</p>
+          <p class="meta">Home lab · Microsoft 365 test tenant</p>
           <p>
-            Worked through the Microsoft 365 admin center to practice user lifecycle and
-            collaboration administration, with a focus on tasks that show up in real
-            sysadmin and help-desk-engineer roles.
+            Worked across all five Microsoft 365 admin centers (M365, Exchange, Teams,
+            SharePoint, Entra) in a sandbox tenant to administer user lifecycle, collaboration
+            services, and identity protection — the workflows that recur in real sysadmin and
+            help-desk-engineer work.
           </p>
           <ul>
             <li>
-              Created test users, assigned licenses, set up groups, and explored shared
-              mailbox concepts and admin-center navigation.
+              Created test users in the M365 admin center, assigned licenses covering Exchange
+              Online, Teams, and SharePoint/OneDrive, and validated that mailboxes provisioned
+              automatically.
             </li>
             <li>
-              Enabled and validated MFA on test accounts and documented secure onboarding
-              and offboarding workflows.
+              Configured shared mailboxes and Microsoft 365 Groups for collaboration scenarios;
+              reviewed Exchange mailbox attributes, Teams messaging and meeting policies, and
+              SharePoint site-level permissions.
             </li>
             <li>
-              Built familiarity with Exchange Online, Teams administration basics, and
-              SharePoint permissions concepts.
+              Enforced MFA on test accounts via the Entra admin center and validated enforcement
+              against sign-in activity.
+            </li>
+            <li>
+              Documented a secure onboarding and offboarding workflow combining license
+              assignment, MFA enforcement, group membership, and access deprovisioning.
             </li>
           </ul>
+          <a class="writeup-link" href="labs.html#m365-lab">View full write-up &rarr;</a>
           <div class="tech-row">
             <span class="tech">Microsoft 365</span>
             <span class="tech">Exchange Online</span>
             <span class="tech">Teams admin</span>
             <span class="tech">SharePoint</span>
+            <span class="tech">Entra ID</span>
+            <span class="tech">MFA</span>
+          </div>
+        </article>
+
+        <!-- Linux lab -->
+        <article class="project-card">
+          <h3>Linux Server Fundamentals and Troubleshooting Lab</h3>
+          <p class="meta">Home lab · Ubuntu Server LTS · cross-platform troubleshooting</p>
+          <p>
+            Built an Ubuntu Server LTS lab and worked through the command-line skills expected
+            of a Linux-capable sysadmin or infrastructure support engineer, then documented a
+            side-by-side comparison of common operational tasks against Windows Server.
+          </p>
+          <ul>
+            <li>
+              Managed users and groups (<code>useradd</code>, <code>usermod</code>,
+              <code>groupadd</code>) and set file ownership and permissions using
+              <code>chmod</code> and <code>chown</code>.
+            </li>
+            <li>
+              Administered packages with <code>apt</code>, controlled services via
+              <code>systemctl</code> (start, stop, enable, status), and reviewed system and
+              service logs using <code>journalctl</code> and <code>/var/log/</code>.
+            </li>
+            <li>
+              Walked through a service-down troubleshooting scenario from the command line:
+              <code>systemctl status</code>, <code>journalctl -u</code>, dependency check,
+              and resolution.
+            </li>
+            <li>
+              Documented a side-by-side comparison of Windows Server and Linux for common
+              tasks (user creation, service restart, network configuration, log review) to
+              support faster cross-platform troubleshooting.
+            </li>
+          </ul>
+          <a class="writeup-link" href="labs.html#linux-lab">View full write-up &rarr;</a>
+          <div class="tech-row">
+            <span class="tech">Ubuntu Server</span>
+            <span class="tech">Linux administration</span>
+            <span class="tech">systemd</span>
+            <span class="tech">journalctl</span>
+            <span class="tech">Bash</span>
+            <span class="tech">Cross-platform troubleshooting</span>
+          </div>
+        </article>
+
+        <!-- PowerShell lab -->
+        <article class="project-card">
+          <h3>PowerShell Scripting Lab</h3>
+          <p class="meta">Home lab · two-script scripting and reporting project</p>
+          <p>
+            Built two PowerShell projects to develop scripting fluency beyond syntax
+            memorization: a system inventory collector and a CSV-driven device reporting tool
+            with structured output, error handling, and README documentation.
+          </p>
+          <ul>
+            <li>
+              Developed a system inventory script using <code>Get-CimInstance</code>, variables,
+              arrays, and loops to collect hostname, IP address, OS version, and serial number;
+              exported results via <code>Export-Csv</code> for administrative reporting.
+            </li>
+            <li>
+              Built a CSV-driven device inventory tool
+              (<code>Devices.csv</code> &rarr; <code>DeviceReport.ps1</code> &rarr;
+              <code>DeviceReportOutput.csv</code>) that imports a device list, iterates with
+              <code>foreach</code>, attempts to gather information per device, and writes
+              consolidated results.
+            </li>
+            <li>
+              Implemented <code>try</code>/<code>catch</code> error handling, inline comments,
+              and a <code>README.txt</code> documenting script purpose, expected inputs/outputs,
+              and troubleshooting notes for repeatable use.
+            </li>
+            <li>
+              Organized deliverables under <code>C:\PowerShellLab\</code> with consistent
+              project structure for portfolio reference.
+            </li>
+          </ul>
+          <a class="writeup-link" href="labs.html#powershell-lab">View full write-up &rarr;</a>
+          <div class="tech-row">
+            <span class="tech">PowerShell</span>
+            <span class="tech">Get-CimInstance</span>
+            <span class="tech">Import-Csv</span>
+            <span class="tech">Export-Csv</span>
+            <span class="tech">Try/Catch</span>
+            <span class="tech">Admin reporting</span>
+          </div>
+        </article>
+
+        <!-- VM lab -->
+        <article class="project-card">
+          <h3>Virtual Machine Deployment and Networking Lab</h3>
+          <p class="meta">Home lab · virtualization and VM networking</p>
+          <p>
+            Deployed and managed virtual machines to practice virtualization administration,
+            VM-level networking, and recovery workflows.
+          </p>
+          <ul>
+            <li>
+              Deployed multiple VMs in a desktop hypervisor and configured resource allocation,
+              snapshots, and snapshot-based revert workflows for non-destructive testing.
+            </li>
+            <li>
+              Configured virtual networking using both NAT and bridged modes, and troubleshot
+              connectivity on VMs unable to reach the network.
+            </li>
+            <li>
+              Documented snapshot/restore procedures and virtual networking reference notes
+              for repeatable lab and support use.
+            </li>
+          </ul>
+          <a class="writeup-link" href="labs.html#vm-lab">View full write-up &rarr;</a>
+          <div class="tech-row">
+            <span class="tech">VirtualBox</span>
+            <span class="tech">VMware Workstation</span>
+            <span class="tech">Snapshots</span>
+            <span class="tech">Virtual networking</span>
+            <span class="tech">NAT</span>
+            <span class="tech">Bridged</span>
+          </div>
+        </article>
+
+        <!-- Cloud lab -->
+        <article class="project-card">
+          <h3>Cloud Administration Fundamentals Lab — Azure, Entra ID, Intune, and AWS</h3>
+          <p class="meta">Home lab · multi-cloud identity, compute, storage, and monitoring · Free Tier</p>
+          <p>
+            Built foundational cloud administration skills across Microsoft Azure and AWS,
+            focused on identity, compute, storage, access control, and monitoring as they apply
+            to IT administration and infrastructure support roles. Used Free Tier and trial
+            services throughout to keep the lab cost-controlled.
+          </p>
+          <ul>
+            <li>
+              <strong>Microsoft Azure / Entra ID:</strong> created users and groups in Entra ID,
+              enforced MFA, reviewed Conditional Access concepts, deployed a resource group
+              containing a Free Tier Azure VM (B-series) inside a virtual network, and reviewed
+              role-based access control assignments.
+            </li>
+            <li>
+              <strong>Microsoft Intune:</strong> reviewed the Intune admin center to understand
+              cloud-based endpoint management — enrollment concepts, compliance policies, and
+              Intune’s role in a hybrid AD/Entra environment.
+            </li>
+            <li>
+              <strong>AWS:</strong> configured IAM users and groups with least-privilege
+              policies, launched a Free Tier EC2 instance, created an S3 bucket with default
+              public-access blocks reviewed, configured a security group, and reviewed
+              CloudWatch monitoring.
+            </li>
+            <li>
+              Documented architecture notes comparing Azure and AWS across identity
+              (Entra ID vs. IAM), compute (Azure VM vs. EC2), storage (Azure Storage vs. S3),
+              network security (NSG vs. security group), and monitoring (Azure Monitor vs.
+              CloudWatch).
+            </li>
+          </ul>
+          <a class="writeup-link" href="labs.html#cloud-lab">View full write-up &rarr;</a>
+          <div class="tech-row">
+            <span class="tech">Microsoft Azure</span>
+            <span class="tech">Entra ID</span>
+            <span class="tech">Intune</span>
+            <span class="tech">Conditional Access</span>
+            <span class="tech">AWS</span>
+            <span class="tech">IAM</span>
+            <span class="tech">EC2</span>
+            <span class="tech">S3</span>
+            <span class="tech">CloudWatch</span>
             <span class="tech">MFA</span>
           </div>
         </article>
@@ -563,8 +774,8 @@
       <ul class="contact-list">
         <li>
           <span class="contact-label">LinkedIn:</span>
-          <a href="https://www.linkedin.com/in/marcus-bufford-01a383127/" target="_blank" rel="noopener">
-            linkedin.com/in/marcus-bufford-01a383127
+          <a href="https://www.linkedin.com/in/marcus-bufford23/" target="_blank" rel="noopener">
+            linkedin.com/in/marcus-bufford23
           </a>
         </li>
         <li>
